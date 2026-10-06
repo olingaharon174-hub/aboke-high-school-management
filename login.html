@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Aboke High School</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="login-page">
+  <div class="login-card">
+    <div class="brand-row">
+      <div class="brand-mark">A</div>
+      <div>
+        <div class="eyebrow">Aboke High School</div>
+        <h1>School Portal</h1>
+      </div>
+    </div>
+
+    <div id="errorMessage" class="alert error" style="display:none;"></div>
+
+    <form id="loginForm" class="login-form">
+      <label>
+        Username
+        <input type="text" id="username" required>
+      </label>
+
+      <label>
+        Password
+        <input type="password" id="password" required>
+      </label>
+
+      <label>
+        Role
+        <select id="role" required>
+          <option value="super_admin">Super Administrator</option>
+          <option value="head_teacher">Head Teacher</option>
+          <option value="deputy_head">Deputy Head Teacher</option>
+          <option value="academic_registrar">Academic Registrar</option>
+          <option value="bursar">Bursar</option>
+          <option value="hr_manager">HR Manager</option>
+          <option value="ict_manager">ICT Manager</option>
+          <option value="security_manager">Security Manager</option>
+          <option value="hod">Head of Department</option>
+          <option value="class_teacher">Class Teacher</option>
+          <option value="subject_teacher">Subject Teacher</option>
+          <option value="librarian">Librarian</option>
+          <option value="school_nurse">School Nurse</option>
+          <option value="boarding_master">Boarding Master</option>
+          <option value="transport_manager">Transport Manager</option>
+          <option value="store_manager">Store Manager</option>
+          <option value="procurement_officer">Procurement Officer</option>
+          <option value="qa_officer">Quality Assurance Officer</option>
+          <option value="parent">Parent</option>
+          <option value="student">Student</option>
+          <option value="auditor">Auditor</option>
+        </select>
+      </label>
+
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+
+    <div class="demo-box">
+      Demo login: <strong>superadmin</strong> / <strong>password123</strong>
+    </div>
+  </div>
+
+  <script src="assets/js/auth.js"></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const role = document.getElementById('role').value;
+      
+      if (login(username, password, role)) {
+        window.location.href = 'dashboard.html';
+      } else {
+        document.getElementById('errorMessage').textContent = 'Invalid username, password, or role.';
+        document.getElementById('errorMessage').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
